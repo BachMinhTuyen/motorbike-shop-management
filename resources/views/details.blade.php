@@ -16,7 +16,7 @@
                 </a>
                 <a href="#" class="list-group-item list-group-item-action">Quản lý mã khuyến mãi</a>
                 <a href="{{route('order.orderAll')}}" class="list-group-item list-group-item-action active" aria-current="true">Quản lý hóa đơn</a>
-                <a href="#" class="list-group-item list-group-item-action">Quản lý bảo hành</a>
+                <a href="{{route('warranty.warrantyAll')}}" class="list-group-item list-group-item-action">Quản lý bảo hành</a>
                 <a href="{{route('customer.customerAll')}}" class="list-group-item list-group-item-action">Quản lý khách hàng</a>
                 <a href="{{route('user.userAll')}}" class="list-group-item list-group-item-action">Quản lý nhân viên</a>
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -222,9 +223,31 @@ class OrderController extends Controller
             'cars.id',
             'cars.name',
             'cars.price',
+            'cars.warranty_period',
             'order_details.*',
         )
         ->get();
+
+        foreach ($orderDetails as $item) {
+            $detailsId = $item->id;
+            $year = $item->warranty_period;
+
+            $startDate = Carbon::now();
+            $endDate = clone $startDate;
+
+            // Tính toán `end_date` dựa trên `warranty_period`
+            if ($year == 0.5) {
+                $endDate->addMonths(6);
+            } else {
+                $endDate->addYears($year);
+            }
+
+            DB::table('guarantees')->insert([
+                'order_detail_id' => $detailsId,
+                'start_date' => $startDate,
+                'end_date' => $endDate
+            ]);
+        }
 
         return view ('details', compact('orderDetails', 'order'));
     }

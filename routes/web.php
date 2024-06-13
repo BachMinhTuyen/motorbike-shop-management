@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WarrantyController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [CarController::class, 'showAll'])->name('home');
@@ -49,4 +50,8 @@ Route::prefix('/user')->name('user.')->group(function() {
 
     Route::get('/addUser', [UserController::class, 'addUserForm'])->name('addUser');
     Route::post('/addUser', [UserController::class, 'addUser'])->name('addUser');
+});
+
+Route::prefix('/warranty')->name('warranty.')->group(function () {
+    Route::get('/', [WarrantyController::class, 'showAll'])->name('warrantyAll');
 });
