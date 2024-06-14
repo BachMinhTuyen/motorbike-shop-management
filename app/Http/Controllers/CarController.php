@@ -78,4 +78,13 @@ class CarController extends Controller
         DB::table('cars')->where('id', $id)->delete();
         return redirect()->route('home');
     }
+
+    public function searchProduct(Request $request) {
+        $name = $request->input('nameProduct');
+
+        $carList = DB::table('cars')
+                ->where('name', 'LIKE', '%' . $name . '%')
+                ->get();
+        return view('overview', compact('carList'));
+    }
 }

@@ -17,8 +17,9 @@
                             </li>
                         
                         </ul>
-                        <form action="#" method="POST" class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Tìm kiếm sản phẩm" aria-label="Search">
+                        <form action="{{route('product.searchProduct')}}" method="POST" class="d-flex" role="search">
+                            @csrf
+                            <input class="form-control me-2" type="search" name="nameProduct" placeholder="Tìm kiếm sản phẩm" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                         <div class="ms-3">

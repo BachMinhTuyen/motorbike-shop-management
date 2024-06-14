@@ -24,6 +24,8 @@ Route::prefix('/product')->name('product.')->group(function() {
     Route::post('/update', [CarController::class, 'updateProduct'])->name('updateProduct');
     Route::get('/detail/{id}', [CarController::class,'detailProduct'])->name('detailProduct');
     Route::get('/delete/{id}', [CarController::class,'deleteProduct'])->name('deleteProduct');
+
+    Route::post('/search', [CarController::class, 'searchProduct'])->name('searchProduct');
 });
 
 Route::prefix('/order')->name('order.')->group(function () {
